@@ -3,8 +3,8 @@ import "./App.css";
 function App() {
   return (
     <main className="p-3 max-w-2xl m-auto">
-      <header className="flex justify-between my-4">
-        <a href="" className="text-bold text-gray-600">
+      <header className="flex items-center justify-between my-4">
+        <a href="" className="text-bold text-3xl text-gray-600">
           Blog
         </a>
         <nav className="flex gap-3 text-gray-600">
@@ -20,7 +20,7 @@ function App() {
           />
         </div>
         <div>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-xl font-semibold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
             laudantium!
           </h2>
@@ -40,7 +40,7 @@ function App() {
           />
         </div>
         <div>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-xl font-semibold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
             laudantium!
           </h2>
@@ -60,7 +60,7 @@ function App() {
           />
         </div>
         <div>
-          <h2 className="text-xl font-bold">
+          <h2 className="text-xl font-semibold">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
             laudantium!
           </h2>
