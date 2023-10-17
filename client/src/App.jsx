@@ -1,20 +1,16 @@
 import "./App.css";
-import Header from "./components/Header";
+import Layout from "./components/Layout";
 import Post from "./components/Post";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <Routes>
-      <Route
-        index
-        element={
-          <main className="p-3 max-w-2xl m-auto">
-            <Header />
-            <Post />
-          </main>
-        }
-      />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Post />} />
+        <Route path="/login" element={<div>login</div>} />
+        <Route path="/register" element={<div>register</div>} />
+      </Route>
     </Routes>
   );
 }
