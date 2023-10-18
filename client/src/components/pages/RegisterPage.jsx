@@ -8,14 +8,21 @@ export default function RegisterPage() {
   async function register(e) {
     e.preventDefault();
 
-    await axios
-      .post(
+    try {
+      const response = await axios.post(
         "http://localhost:4000/register",
         { username, password },
         { headers: { "Content-Type": "application/json" } }
-      )
-      .then((response) => console.log(response.data))
-      .catch((error) => console.error(error));
+      );
+
+      if (response.status === 200) {
+        alert("Registration successful!");
+      } else {
+        alert("Registration failed");
+      }
+    } catch (e) {
+      alert("Registration failed");
+    }
   }
 
   return (
