@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
 
 export default function Header() {
-  const [username, setUsername] = useState(null);
-
+  const { setUserInfo, userInfo } = useContext(UserContext);
   function logout() {
     axios
       .post("http://localhost:4000/logout", {}, { withCredentials: true })
-      .then((response) => {
-        setUsername(null);
+      .then(() => {
+        setUserInfo(null);
       })
       .catch((error) => {
         console.error("Error logging out:", error);
       });
   }
+
+  const username = userInfo?.username;
 
   useEffect(() => {
     axios
@@ -23,7 +25,7 @@ export default function Header() {
       })
       .then((response) => {
         const userInfo = response.data;
-        setUsername(userInfo.username);
+        setUserInfo(userInfo);
       })
       .catch((error) => {
         console.error("Error fetching profile:", error);
