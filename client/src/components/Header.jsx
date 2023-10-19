@@ -1,28 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 
 export default function Header() {
   const [username, setUsername] = useState(null);
   useEffect(() => {
-    // axios
-    //   .get("http://localhost:4000/profile", {
-    //     withCredentials: true,
-    //   })
-    //   .then((res) => {
-    //     res.json();
-    //   })
-    //   .then((userInfo) => {
-    //     setUsername(userInfo.username);
-    //   });
-
-    fetch("http://localhost:4000/profile", {
-      credentials: "include",
-    }).then((res) =>
-      res.json().then((userInfo) => {
+    axios
+      .get("http://localhost:4000/profile", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        const userInfo = response.data;
         setUsername(userInfo.username);
       })
-    );
+      .catch((error) => {
+        console.error("Error fetching profile:", error);
+      });
   }, []);
 
   return (
