@@ -4,6 +4,18 @@ import axios from "axios";
 
 export default function Header() {
   const [username, setUsername] = useState(null);
+
+  function logout() {
+    axios
+      .post("http://localhost:4000/logout", {}, { withCredentials: true })
+      .then((response) => {
+        setUsername(null);
+      })
+      .catch((error) => {
+        console.error("Error logging out:", error);
+      });
+  }
+
   useEffect(() => {
     axios
       .get("http://localhost:4000/profile", {
@@ -27,7 +39,7 @@ export default function Header() {
         {username && (
           <>
             <Link to="/create">Create new post</Link>
-            <a href="/logout">Log out</a>
+            <a onClick={logout}>Log out</a>
           </>
         )}
         {!username && (
