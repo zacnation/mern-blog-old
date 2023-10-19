@@ -23,10 +23,12 @@ export default function LoginPage() {
       if (response.status === 200) {
         setRedirect(true);
       } else {
-        alert("Wrong credentials");
+        alert("Incorrect credentials");
+        console.log(e);
       }
     } catch (e) {
-      alert(e);
+      alert("Incorrect credentials");
+      console.log(e);
     }
   }
 
